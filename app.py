@@ -1,6 +1,9 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
+from flask_cors import CORS
+import json
 
 app = Flask(__name__)
+CORS(app, support_credentials = True)
 
 @app.route("/index")
 @app.route("/index.html")
@@ -45,6 +48,23 @@ def viz2():
 def viz3():
     return render_template('viz3.html')
 
+@app.route('/get_top20_avg_rating', methods=['GET'])
+def get_top20_avg_rating():
+    file_path = "./visualization/Top_20_avg_rating_products.json"
+    result = []
+    with open(file_path) as f:
+        for line in f:
+            result.append( json.loads(line.strip("\n")) )
+    return jsonify(result)
+
+@app.route('/get_top20_rated', methods=['GET'])
+def get_top20_rated():
+    file_path = "./visualization/Top_20_rated_products.json"
+    result = []
+    with open(file_path) as f:
+        for line in f:
+            result.append( json.loads(line.strip("\n")) )
+    return jsonify(result)
 
 if __name__ == "__main__":
     app.run(debug=True)
