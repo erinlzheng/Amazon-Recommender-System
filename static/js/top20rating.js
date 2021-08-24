@@ -1,4 +1,4 @@
-class Top20Raing {
+class Top20Rating {
     /**
      * Construct function
      * Initialize chart
