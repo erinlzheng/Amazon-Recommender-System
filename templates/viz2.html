@@ -14,7 +14,9 @@
   <link href="static/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -55,9 +57,9 @@
           <li><a href="insights.html">Insights</a></li>
           <li class="drop-down"><a href="">Visualizations</a>
             <ul>
-                <li><a href="viz1.html">Visualization 1</a></li>
-                <li class="active"><a href="viz2.html">Visualization 2</a></li>
-                <li><a href="viz3.html">Visualization 3</a></li>
+              <li><a href="viz1.html">Top 20 rating</a></li>
+              <li class="active"><a href="viz2.html">Most rated products</a></li>
+              <li><a href="viz3.html">Visualization 3</a></li>
             </ul>
           </li>
         </ul>
@@ -83,41 +85,74 @@
       </div>
     </section><!-- End Our Services Section -->
 
-
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
-
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>Moderna</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-bootstrap-template-corporate-moderna/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
+    <div
+      style="width: 100%; height: 100%; background-color: #F3F8FA; padding-left: 10%; padding-right: 10%; text-align: center;">
+      <label
+        style="font-family: Arial, Helvetica, sans-serif; font-size: 18px; font-weight: bold;padding: 25px; padding-bottom: 2px;">Top
+        20 most rated products</label>
+      <svg style="width: 100%; height:280px" id="svg1"></svg>
     </div>
-  </footer><!-- End Footer -->
 
-  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
-  <!-- Vendor JS Files -->
-  <script src="static/vendor/jquery/jquery.min.js"></script>
-  <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="static/vendor/jquery.easing/jquery.easing.min.js"></script>
-  <script src="static/vendor/php-email-form/validate.js"></script>
-  <script src="static/vendor/venobox/venobox.min.js"></script>
-  <script src="static/vendor/waypoints/jquery.waypoints.min.js"></script>
-  <script src="static/vendor/counterup/counterup.min.js"></script>
-  <script src="static/vendor/owl.carousel/owl.carousel.min.js"></script>
-  <script src="static/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="static/vendor/aos/aos.js"></script>
+    <!-- ======= Footer ======= -->
+    <footer id="footer" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
 
-  <!-- Template Main JS File -->
-  <script src="static/js/main.js"></script>
+      <div class="container">
+        <div class="copyright">
+          &copy; Copyright <strong><span>Moderna</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+          <!-- All the links in the footer should remain intact. -->
+          <!-- You can delete the links only if you purchased the pro version. -->
+          <!-- Licensing information: https://bootstrapmade.com/license/ -->
+          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-bootstrap-template-corporate-moderna/ -->
+          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        </div>
+      </div>
+    </footer><!-- End Footer -->
+
+    <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+    <div id="tooltip" style="
+        padding: 8px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        font-weight: bold;
+        width: auto;
+        height: auto;
+        position: absolute;
+        text-align: left;
+        border-style: solid;
+        border-width: 0.5px;
+        background-color: white;
+        border-radius: 5px;
+        opacity: 0.0;
+        display : none;
+        left: calc(10% + 10px);
+        top: -1110px;"></div>
+
+
+    <!-- Vendor JS Files -->
+    <script src="static/vendor/jquery/jquery.min.js"></script>
+    <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="static/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="static/vendor/php-email-form/validate.js"></script>
+    <script src="static/vendor/venobox/venobox.min.js"></script>
+    <script src="static/vendor/waypoints/jquery.waypoints.min.js"></script>
+    <script src="static/vendor/counterup/counterup.min.js"></script>
+    <script src="static/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="static/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="static/vendor/aos/aos.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="static/js/main.js"></script>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="static/js/top20rating.js"></script>
+    <script>
+      const top20Raing = new Top20Raing();
+      top20Raing.initRated();
+    </script>
+    </script>
 
 </body>
 
