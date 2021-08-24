@@ -50,7 +50,7 @@ def viz3():
 
 @app.route('/get_top20_avg_rating', methods=['GET'])
 def get_top20_avg_rating():
-    file_path = "./visualization/Top_20_avg_rating_products.json"
+    file_path = "./static/data/Top_20_avg_rating_products.json"
     result = []
     with open(file_path) as f:
         for line in f:
@@ -59,7 +59,7 @@ def get_top20_avg_rating():
 
 @app.route('/get_top20_rated', methods=['GET'])
 def get_top20_rated():
-    file_path = "./visualization/Top_20_rated_products.json"
+    file_path = "./static/data/Top_20_rated_products.json"
     result = []
     with open(file_path) as f:
         for line in f:
