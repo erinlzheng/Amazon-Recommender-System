@@ -21,15 +21,16 @@ from sklearn.decomposition import TruncatedSVD
 app = Flask(__name__)
 CORS(app, support_credentials=True)
 
+data = pd.read_csv('static/data/merged.csv') 
+df = data[['asin', 'user', 'rating']] 
+df1= df.dropna()
+new_df = df1.head(300000)
+ratings_matrix = new_df.pivot_table(values='rating', index='user', columns='asin', fill_value=0)
+
 # DEF
 def get_recommendations(asin):
-    new_df = merged_df.head(5000)
-    ratings_matrix = new_df.pivot_table(values='rating', index='user', columns='asin', fill_value=0)
-
     X = ratings_matrix.T
     X1 = X
-
-
     SVD = TruncatedSVD(n_components=10)
     decomposed_matrix = SVD.fit_transform(X)
     decomposed_matrix.shape
@@ -49,7 +50,7 @@ def get_recommendations(asin):
     products = Recommend[0:10]
     for i in products:
         url = 'https://www.amazon.com/s?k='+i+'&ref=nb_sb_noss'
-        print (url)
+        return url
 
 
 # APP ROUTES
@@ -71,9 +72,24 @@ def about():
 def products():
     return render_template('products.html')
 def main():
-    if flask.request.method == ‘GET’:
-        return(flask.render_template(‘index.html’))
-        
+    if flask.request.method == 'GET':
+        return(flask.render_template('products.html'))
+
+    if flask.request.method == 'POST':
+        m_name = flask.request.form['product_name']
+        m_name = m_name.asin()
+         if m_name not in all_titles:
+            return(flask.render_template('negative.html',name=m_name))
+        else:
+            result_final = get_recommendations(m_name)
+            names = []
+            dates = []
+            for i in range(len(result_final)):
+                names.append(result_final.iloc[i][0])
+                dates.append(result_final.iloc[i][1])
+
+            return flask.render_template('positive.html',movie_names=names,movie_date=dates,search_name=m_name)
+
 @app.route("/insights")
 @app.route("/insights.html")
 def insights():
