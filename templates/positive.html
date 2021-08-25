@@ -84,10 +84,46 @@
       </div>
     </section><!-- End Our Portfolio Section -->
 <!-- Form Section -->
-    <form action = "http://localhost:5000/products" method = "post">
-      <p>Enter ASIN Number:</p>
-      <p><input type = "text" name = "nm" /></p>
-      <p><input type = "submit" value = "submit" /></p>
+<h2><u>Recommendations:</u></h2>
+<p>Showing results for: {{ search_name }}</p>
+<table class="movie_table" align="center">
+    <tr>
+        <th>Movie Title</th>
+        <th>Release Date</th>
+    </tr>
+    <tbody class="table_body">
+        <tr>
+            <td>{{ product_names[0] }}</td>
+        </tr>
+        <tr>
+            <td>{{ product_names[1] }}</td>
+        </tr>
+        <tr>
+            <td>{{ product_names[2] }}</td>
+        </tr>
+        <tr>
+            <td>{{ product_names[3] }}</td>
+        </tr>
+        <tr>
+            <td>{{ product_names[4] }}</td>
+        </tr>
+        <tr>
+            <td>{{ product_names[5] }}</td>
+        </tr>
+        <tr>
+            <td>{{ product_names[6] }}</td>
+        </tr>
+        <tr>
+            <td>{{ product_names[7] }}</td>
+        </tr>
+        <tr>
+            <td>{{ product_names[8] }}</td>
+        </tr>
+        <tr>
+            <td>{{ product_names[9] }}</td>
+        </tr>
+    </tbody>
+</table>
 <!-- End Form -->
   <!-- ======= Footer ======= -->
   <footer id="footer" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
