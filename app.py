@@ -1,8 +1,10 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, url_for
 import flask
 from flask_cors import CORS
 import json
-import numpy as np 
+import itertools
+import numpy as np
+from numpy.core.numeric import indices 
 import pandas as pd
 from sqlalchemy import create_engine
 import psycopg2 as pg2
@@ -25,10 +27,11 @@ CORS(app, support_credentials=True)
 data = pd.read_csv('C:\\Users\\erinz\\Downloads\\ez boot camp\\Projects\\Project-3-Recommender-System\\static\\data\\merged.csv') 
 df = data[['asin', 'user', 'rating']] 
 df1= df.dropna()
-new_df = df1.head(5000)
+new_df = df1.head(50000)
 ratings_matrix = new_df.pivot_table(values='rating', index='user', columns='asin', fill_value=0)
 
-
+indices = pd.Series(new_df.index, index=new_df['asin'])
+all_asin = [new_df['asin'][i] for i in range(len(new_df['asin']))]
 
 # df2 = ratings_matrix.reset_index()
 # indices = pd.Series(df2.index, index=df2['asin'])
@@ -40,23 +43,15 @@ def get_recommendations(asin):
     X1 = X
     SVD = TruncatedSVD(n_components=10)
     decomposed_matrix = SVD.fit_transform(X)
-    decomposed_matrix.shape
     correlation_matrix = np.corrcoef(decomposed_matrix)
-    correlation_matrix.shape
     i = asin
     product_id = list(X.index)
     asin_id = product_id.index(i)
-    asin_id
     correlation_asin_id = correlation_matrix[asin_id]
-    correlation_asin_id.shape
     Recommend = list(X.index[correlation_asin_id > 0.65])
     Recommend.remove(i) 
-    Recommend[0:10]
-    # recs = []
-    # for i in products:
-    #     amazon_url = 'https://www.amazon.com/s?k='+i+'&ref=nb_sb_noss'
-    #     recs.append(amazon_url)
-    # return recs
+    recommend10 = Recommend[0:10]
+    return recommend10
 
 
 # APP ROUTES
@@ -77,22 +72,34 @@ def about():
 @app.route("/products", methods=['GET', 'POST'])
 def products():
     if flask.request.method == 'GET':
-        return(flask.render_template('products.html'))
+        return(render_template('products.html'))
 
     if flask.request.method == 'POST':
-        m_name = flask.request.form['product_name']
-        # m_name = m_name.user()
-    # if m_name not in all_asin:
-    #     return(flask.render_template('negative.html',name=m_name))
-    else:
-        result_final = get_recommendations(m_name)
-        names = []
+        p_name = flask.request.form['product_name']
+
+        if p_name not in all_asin:
+            return(render_template('negative.html',name=p_name))
+        else:
+            result_final = get_recommendations(p_name)
+            names = []
+            for x in result_final:
+                amazon_url = 'https://amazon-asin.com/asincheck/?product_id='+x
+                names.append(amazon_url)
+            return flask.render_template('positive.html',product_names=names,search_name=p_name)
+
+
+            # for x in products:
+            #     amazon_url = 'https://www.amazon.com/s?k='+x+'&ref=nb_sb_noss'
+            #     recs = []
+            #     recs.append(amazon_url)
+            #     return recs
+
         # names = result_final
-        for i in range(len(result_final)):
-            amazon_url = 'https://www.amazon.com/s?k='+i+'&ref=nb_sb_noss'
-            names.append(result_final.iloc[i][0])
+        # for i in range(len(result_final)):
+        #     amazon_url = 'https://www.amazon.com/s?k='+i+'&ref=nb_sb_noss'
+        #     # names.append(result_final.iloc[i][0])
     
-        return flask.render_template('positive.html',product_names=names,search_name=m_name)
+        # return flask.render_template('positive.html',product_names=names,search_name=m_name)
         
 
 @app.route("/insights")
