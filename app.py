@@ -20,9 +20,11 @@ from scipy.sparse import csr_matrix
 from scipy.sparse.linalg import svds
 import warnings; warnings.simplefilter('ignore')
 from sklearn.decomposition import TruncatedSVD
+from boto.s3.connection import S3Connection
 
 app = Flask(__name__)
 CORS(app, support_credentials=True)
+s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
 
 data = pd.read_csv('C:\\Users\\erinz\\Downloads\\ez boot camp\\Projects\\Project-3-Recommender-System\\static\\data\\merged.csv') 
 df = data[['asin', 'user', 'rating']] 
