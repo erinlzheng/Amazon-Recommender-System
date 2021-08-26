@@ -25,8 +25,8 @@ import os
 
 app = Flask(__name__)
 CORS(app, support_credentials=True)
-s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
-s3_handler = S3Handler(os.environ.get('S3_KEY'), os.environ.get('S3_SECRET'))
+# s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
+# s3_handler = new S3Handler(os.environ.get('S3_KEY'), os.environ.get('S3_SECRET'))
 
 data = pd.read_csv('C:\\Users\\erinz\\Downloads\\ez boot camp\\Projects\\Project-3-Recommender-System\\static\\data\\merged.csv') 
 df = data[['asin', 'user', 'rating']] 

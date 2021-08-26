@@ -104,85 +104,87 @@
       <td>Data Cleaning</td>
       <td>
         <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
+          <li>Original 2 datasets were nearly 10 GB each before merging. (JSON:metadata and CSV:ratings)</li>
+          <li>Nothing could read the 10 GB file so we had to read the zipped file, create a new dictionary, and append the data from the JSON file into the dictionary.</li>
+          <li>After basic cleaning, the file was reduced down to 1.5 GB, then we converted the file to prepare for merge.</li>
+          <li>Merged metadata with ratings, but the file was still too big (10GB) </li>
+          <li>Looked through the merged files and found that there was a lot of issues with the formatting of some columns </li>
+          <li>Removed all columns except ASIN, UserID, Ratings, and Timestamp.</li>
+          <li>Final merged CSV became 50MB (still over 1 million lines) </li>
         </ul>
       </td>
     </tr>
     <tr class="table-secondary">
-      <th scope="row">3</th>
+      <th scope="row">2</th>
       <td>SQL</td>
       <td>
         <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>              
+          <li>Imported CSV to create a dataframe to use for our visualizations. </li>
+          <li>Issue: Our initial merged data happened to be 18-20gbs making it hard to import into SQL
+            <br>Fix: Removed multiple unneccessary columns and cut our merged data by more than half (1-3gbs) </li>              
         </ul>
       </td>
     </tr>
     <tr class="table-primary">
-      <th scope="row">4</th>
+      <th scope="row">3</th>
       <td>Machine Learning</td>
       <td>
         <ul>
-          <li>
-            <br>
-          </li>
-          <li>Issue:
-            <br>Fix:
-          </li>
-          <li>
-            <br>
-          </li>
+          <li></li>
+          <li>Used recommender system model for our machine learning portion.</li>
+          <li>Uses SVD algorithm to that decomposes a matrix into several component matrices, exposing many of the useful and interesting properties of the original matrix.</li>
         </ul>
       </td>
     </tr>
     <tr class="table-info">
-      <th scope="row">5</th>
+      <th scope="row">4</th>
       <td>Flask</td>
       <td>
         <ul>
-          <li></li>
-          <li></li>             
+          <li>Deployed Flask and connected it to our SQL database</li>
+          <li>Issues came afterwards when we had to incorporate machine learning with our Flask
+            <br>Fix: Instead of running our machine learning through our database, we worked with our CSV instead</li>
+          <li>Routed all pages(16). </li> 
+          <li>Set up a get_recommendations fuction that recommends 10 similar products.</li>
+          <li>Created Config_db and setup_db for SQL server</li>
+          <li>Create a for loop </li>           
         </ul>
       </td>
     </tr>
     <tr class="table-secondary">
-      <th scope="row">6</th>
+      <th scope="row">5</th>
       <td>HTML/CSS </td>
       <td>
         <ul>
-          <li></li>
-          <li></li>              
+          <li>Created 16 pages using BootstrapMade</li>
+          <li>Changed color theme to fit Amazon</li>
+          <li>Added carasoul element for visualizations on Index</li>
+          <li>Added navigation buttons on all visualizations </li>
+          <li>Navigation bar and drop down menu</li>
+          <li>Uploaded images and added links</li>           
         </ul>
       </td>
     </tr>
     <tr class="table-primary">
-      <th scope="row">7</th>
+      <th scope="row">6</th>
       <td>Visualization 1 & 2</td>
       <td>
         <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
+          <li>Acquired the data, and put the data we collect into a structure. Filter out the data that is not necessary for data visualization.</li>
+          <li>Issue: Combined codes of two visualizations into one json file. Only saw first graph on website when we ran the flask, the second chart has not shown.
+            <br>Fix: Separated the code of two visualizations into two different json files. Revised the code when realized GitHub overwrote the second visualization.</li>
+          <li>Created HTML and Javascript files. Used CSS, SVG to design the charts.</li>
         </ul>
       </td>
     </tr>
     <tr class="table-info">
-      <th scope="row">2</th>
-      <td>Visualizations 3 & 4</td>
+      <th scope="row">7</th>
+      <td>Visualizations 3</td>
       <td>
         <ul>
-          <li>Had an issue rendering template because I created the html pages before I used flask</li>
-          <li>Added an extra variable for the render_template to work</li>
-          <li>Routed all 14 HTML pages</li>
+          <li></li>
+          <li></li>
+          <li></li>
         </ul>
       </td>
     </tr>
@@ -191,13 +193,13 @@
       <td>Finalization/Heroku Deployment</td>
       <td>
         <ul>
-          <li>Issues: Troubles merging branch on github
-          <br>Fix: Had to resolve all conficts 
+          <li>Issues:
+          <br>Fix: 
           </li>
-          <li>Issues: Adding additional branches caused extra lines to be added to the readme file
-            <br>Fix: Erased all unneccessary information and cleaned up the repository
+          <li>Issues: 
+            <br>Fix: 
           </li>
-          <li>Merge all branches to main and added titles to all the visualizations</li>
+          <li></li>
         </ul>
       </td>
     </tr>
