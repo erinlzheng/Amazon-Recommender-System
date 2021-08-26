@@ -613,6 +613,27 @@ section {
     display: inline-block;
   }
 }
+
+/*--------------------------------------------------------------
+# Visualization Carousel
+--------------------------------------------------------------*/
+#vc {
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+  position: relative;
+  padding: 0;
+}
+
+
+#vc .container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 100px;
+  padding-top: 0;
+}
+
 /*--------------------------------------------------------------
 # Products
 --------------------------------------------------------------*/
@@ -679,52 +700,88 @@ section {
 }
 
 .services .icon-box-pink .icon {
-  background: #fceef3;
+  background: #fcf5ee;
 }
 
 .services .icon-box-pink .icon i {
-  color: #ff689b;
+  color: #ff9900;
 }
 
 .services .icon-box-pink:hover {
-  border-color: #ff689b;
+  border-color: #ff9900;
 }
 
 .services .icon-box-cyan .icon {
-  background: #e6fdfc;
+  background: #eef1f4  ;
 }
 
 .services .icon-box-cyan .icon i {
-  color: #3fcdc7;
+  color: #232f3e;
 }
 
 .services .icon-box-cyan:hover {
-  border-color: #3fcdc7;
+  border-color: #232f3e;
 }
 
 .services .icon-box-green .icon {
-  background: #eafde7;
+  background: #eef1f4  ;
 }
 
 .services .icon-box-green .icon i {
-  color: #41cf2e;
+  color: #232f3e;
 }
 
 .services .icon-box-green:hover {
-  border-color: #41cf2e;
+  border-color: #232f3e;
 }
 
 .services .icon-box-blue .icon {
-  background: #e1eeff;
+  background: #eef1f4  ;
 }
 
 .services .icon-box-blue .icon i {
-  color: #2282ff;
+  color: #232f3e;
 }
 
 .services .icon-box-blue:hover {
-  border-color: #2282ff;
+  border-color: #232f3e;  
 }
+
+/*--------------------------------------------------------------
+# Nav Previous & Next Button 
+--------------------------------------------------------------*/
+.pn a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+.pn a:hover {
+  background-color: #FF9900;
+  color: white;
+  text-decoration: none;
+}
+
+.pn .previous {
+  background-color: #232f3e;
+  color: white;
+  position: fixed;
+  left: 25px;
+  top: 300px;
+}
+
+.pn .next {
+  background-color: #232f3e;
+  color: white;
+  position: fixed;
+  right: 25px;
+  top: 275px;
+}
+
+.pn .round {
+  border-radius: 50%; 
+}
+
 
 /*--------------------------------------------------------------
 # Why Us

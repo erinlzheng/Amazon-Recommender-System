@@ -27,7 +27,7 @@ CORS(app, support_credentials=True)
 data = pd.read_csv('C:\\Users\\erinz\\Downloads\\ez boot camp\\Projects\\Project-3-Recommender-System\\static\\data\\merged.csv') 
 df = data[['asin', 'user', 'rating']] 
 df1= df.dropna()
-new_df = df1.head(50000)
+new_df = df1.head(100000)
 ratings_matrix = new_df.pivot_table(values='rating', index='user', columns='asin', fill_value=0)
 
 indices = pd.Series(new_df.index, index=new_df['asin'])
