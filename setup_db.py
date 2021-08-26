@@ -48,7 +48,8 @@ print("Table created successfully........")
 
 #Insert Data
 #Create Engine and connection to Database
-engine = create_engine(f'postgresql://{SQL_USERNAME}:{SQL_PASSWORD}@localhost:{LOCAL_PORT}/{DB_NAME}')
+#engine = create_engine(f'postgresql://{SQL_USERNAME}:{SQL_PASSWORD}@localhost:{LOCAL_PORT}/{DB_NAME}')
+engine = create_engine(os.environ.get('postgresql://aws_db', f'postgresql://{SQL_USERNAME}:{SQL_PASSWORD}@localhost:{LOCAL_PORT}/{DB_NAME}'))
 
 electronics_df.to_sql("merged_df",engine,if_exists="replace")
 
