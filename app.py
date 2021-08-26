@@ -129,6 +129,38 @@ def viz2():
 @app.route("/viz3.html")
 def viz3():
     return render_template('viz3.html')
+    
+
+@app.route("/detail1")
+@app.route("/detail1.html")
+def detail1():
+    return render_template('detail1.html')
+
+
+@app.route("/detail2")
+@app.route("/detail2.html")
+def detail2():
+    return render_template('detail2.html')
+
+@app.route("/detail3")
+@app.route("/detail3.html")
+def detail3():
+    return render_template('detail3.html')
+
+@app.route("/detail4")
+@app.route("/detail4.html")
+def detail4():
+    return render_template('detail4.html')
+
+@app.route("/detail5")
+@app.route("/detail5.html")
+def detail5():
+    return render_template('detail5.html')
+
+@app.route("/detail6")
+@app.route("/detail6.html")
+def detail6():
+    return render_template('detail6.html')
 
 @app.route('/get_top20_avg_rating', methods=['GET'])
 def get_top20_avg_rating():
