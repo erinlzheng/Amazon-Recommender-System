@@ -1,6 +1,7 @@
 from flask import Flask, render_template, jsonify, url_for
 import flask
 from flask_cors import CORS
+from sqlalchemy import SQLAlchemy
 import json
 import itertools
 import numpy as np
@@ -27,6 +28,7 @@ app = Flask(__name__)
 CORS(app, support_credentials=True)
 # s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
 # s3_handler = new S3Handler(os.environ.get('S3_KEY'), os.environ.get('S3_SECRET'))
+
 
 data = pd.read_csv('C:\\Users\\erinz\\Downloads\\ez boot camp\\Projects\\Project-3-Recommender-System\\static\\data\\merged.csv') 
 df = data[['asin', 'user', 'rating']] 
@@ -60,19 +62,15 @@ def get_recommendations(asin):
 
 # APP ROUTES
 @app.route("/index")
-@app.route("/index.html")
 @app.route("/")
 def index():
     return render_template('index.html')
 
 
 @app.route("/about")
-@app.route("/about.html")
 def about():
     return render_template('about.html')
 
-
-@app.route("/products.html", methods=['GET', 'POST'])
 @app.route("/products", methods=['GET', 'POST'])
 def products():
     if flask.request.method == 'GET':
@@ -107,59 +105,48 @@ def products():
         
 
 @app.route("/insights")
-@app.route("/insights.html")
 def insights():
     return render_template('insights.html')
 
 @app.route("/tutorial")
-@app.route("/tutorial.html")
 def tutorial():
     return render_template('tutorial.html')
 
 @app.route("/viz1")
-@app.route("/viz1.html")
 def viz1():
     return render_template('viz1.html')
 
 @app.route("/viz2")
-@app.route("/viz2.html")
 def viz2():
     return render_template('viz2.html')
 
 @app.route("/viz3")
-@app.route("/viz3.html")
 def viz3():
     return render_template('viz3.html')
     
 
 @app.route("/detail1")
-@app.route("/detail1.html")
 def detail1():
     return render_template('detail1.html')
 
 
 @app.route("/detail2")
-@app.route("/detail2.html")
 def detail2():
     return render_template('detail2.html')
 
 @app.route("/detail3")
-@app.route("/detail3.html")
 def detail3():
     return render_template('detail3.html')
 
 @app.route("/detail4")
-@app.route("/detail4.html")
 def detail4():
     return render_template('detail4.html')
 
 @app.route("/detail5")
-@app.route("/detail5.html")
 def detail5():
     return render_template('detail5.html')
 
 @app.route("/detail6")
-@app.route("/detail6.html")
 def detail6():
     return render_template('detail6.html')
 
