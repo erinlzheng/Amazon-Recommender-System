@@ -59,8 +59,8 @@ def get_recommendations(asin):
 
 
 # APP ROUTES
-@app.route("/index")
-@app.route("/index.html")
+#@app.route("/index")
+#@app.route("/index.html")
 @app.route("/")
 def index():
     return render_template('index.html')
