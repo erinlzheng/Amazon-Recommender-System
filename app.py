@@ -21,7 +21,7 @@ from scipy.sparse import csr_matrix
 from scipy.sparse.linalg import svds
 import warnings; warnings.simplefilter('ignore')
 from sklearn.decomposition import TruncatedSVD
-from boto.s3.connection import S3Connection
+import boto3
 import os
 
 app = Flask(__name__)
